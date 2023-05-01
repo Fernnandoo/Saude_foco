@@ -1,47 +1,33 @@
-
 <?php
+//Conectar ao banco de dados
+$conn = mysqli_connect('localhost', 'root', 'admin', 'bd_refit');
 
-$servername = "localhost";
+//Verificar se a conexão foi bem-sucedida
+if (!$conn) {
+    die('Conexão falhou: ' . mysqli_connect_error());
+}
 
-$username = "root";
-
-$password = "admin";
-
-$dbname = "bd_refit";
-
-
-$nome = $_POST['nome'];
-$tel = $_POST['tel'];
+//Salvar os dados no banco de dados
+$name = $_POST['name'];
+$phone = $_POST['phone'];
 $email = $_POST['email'];
-
-
-// Create connection
-
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-
-if ($conn->connect_error) {
-
-  die("Falha na conexão: " . $conn->connect_error);
-
-}
-
-$sql = "INSERT INTO cliente (nome,telefone, email)
-
-VALUES ('$nome','$tel','$email')";
-
-
-if ($conn->query($sql) === TRUE) {
-   echo "Cliente adicionado com sucesso";
-
+$sql = "INSERT INTO cliente (name, email,phone) VALUES ('$name', '$email','$phone')";
+if (mysqli_query($conn, $sql)) {
+    echo "Dados salvos com sucesso!";
+    
 } else {
-
-  echo "Error: " . $sql . "<br>" . $conn->error;
-
+    echo "Erro ao salvar os dados: " . mysqli_error($conn);
 }
-
-$conn->close();
-
+//Fechar a conexão com o banco de dados
+mysqli_close($conn);
+if(isset($_POST['enviar-formulario-1'])) {
+    header('Location:chekout');
+} elseif (isset($_POST['enviar-formulario-2'])) {
+    header('Location: chekout');
+} elseif(isset($_POST['enviar-formulario-3'])) {
+    header('Location: chekout');
+}
+else{
+    echo" erro";
+}
 ?>
-
