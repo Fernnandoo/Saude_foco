@@ -1799,7 +1799,7 @@ nobr {
     position: relative;
     width: 100%;
     min-height: 150px;
-    background: url("../../images/bg-hero-left.jpg") center no-repeat #000;
+    background: url("../../images/jnp.jpg") center no-repeat #000;
     background-size: cover;
 }
 
@@ -1812,7 +1812,15 @@ nobr {
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
 }
+.about .modelo1 {
+    position: relative;
+    width: 100%;
+    min-height: 150px;
+    background: url("../../images/jnp.jpg") center no-repeat #000;
+    background-size: cover;
+}
 
+  
 .about .carousel {
     position: relative;
     z-index: 4;

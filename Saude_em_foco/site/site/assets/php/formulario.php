@@ -21,7 +21,7 @@ if (mysqli_query($conn, $sql)) {
 //Fechar a conexão com o banco de dados
 mysqli_close($conn);
 if(isset($_POST['enviar-formulario-1'])) {
-    header('Location:chekout');
+    header('Location: chekout');
 } elseif (isset($_POST['enviar-formulario-2'])) {
     header('Location: chekout');
 } elseif(isset($_POST['enviar-formulario-3'])) {

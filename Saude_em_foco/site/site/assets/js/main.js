@@ -285,49 +285,6 @@ function stepForm2(){
 	
 }
 
-// Select de Estados	
-$.getJSON( "https://www.geonames.org/childrenJSON?geonameId=3469034", function( data ) {
-	data.geonames.forEach(state => {
-		$('[name="estado"]').append('<option value="' + state.adminCodes1.ISO3166_2 + '">' + state.adminCodes1.ISO3166_2 + '</option>');
-		$('.loading').hide();
-	});
-});
 
-// Coleta as informações do CEP
-$('input[name="inf_field_ZipFour1"]').inputmask("99999\-999", {	
-	clearIncomplete: true,
-	oncomplete: val => {
-		$.getJSON( "https://viacep.com.br/ws/" + val.currentTarget.value.replace(/[^0-9]/g, "") + "/json/", data => {
-			var $form = $(val.currentTarget.form);
-			$('input[name="inf_field_ZipFour1"], input[name="cidade"], select[name="estado"], input[name="endereco"], input[name="bairro"]').tooltip('hide');
-			if (data.erro) {
-				$('input[name="inf_field_ZipFour1"]').attr({'data-trigger':"manual", 'data-placement':'top', 'title': "CEP não encontrado" }).tooltip('show').on('change', function(){
-					$('*').tooltip('hide');
-				});
-				val.currentTarget.value = '';
-				return
-			}
-			$form.find('[name="endereco"]').val(data.logradouro);			
-			$form.find('[name="cidade"]').val(data.localidade);
-			$form.find('[name="bairro"]').val(data.bairro);
-			$form.find('[name="estado"] option[value="' + data.uf + '"]').prop('selected', true);		
-
-		});
-	}
-});
-
-// Envia os dados
-function Envia(){
-	$.ajax({
-		type: "POST",
-		url: "assets/php/send-questionario.php",
-		data: $('.formulario').serialize(),
-		success: function(data)
-		{
-			$('.formulario').hide();
-			$('.msg-send-contato').show();
-		}
-	});	
-}
 
   
