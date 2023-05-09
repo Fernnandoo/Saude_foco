@@ -40,12 +40,12 @@
 
 <body>
     <script>
-       // document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
 
-        // desbloquear a rolagem após 5 segundos
-       // setTimeout(function () {
-         //   document.body.style.overflow = 'auto';
-      //  }, 5000);
+        //desbloquear a rolagem após 5 segundos
+        setTimeout(function () {
+            document.body.style.overflow = 'auto';
+        }, 5000);
 
     </script>
 
@@ -116,7 +116,7 @@
                                 <div id="text_vsl">
                                     <h2>clique para iniciar o video</h2>
                                 </div>
-                                <video id="vsl" class="video" src="vsl/vls.mp4"></video>
+                                <video id="vsl" class="video" onended="terminarVideo()" src="vsl/vls.mp4"></video>
                                 <div class="controls">
                                     <div class="orange-bar">
                                         <div class="orange-juice"></div>
