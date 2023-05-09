@@ -295,10 +295,12 @@ function togglePlayPause() {
 	if (video.paused) {
 		btn.className = "pause";
 		video.play();
+		document.body.style.overflow = 'hidden';
 	}
 	else {
 		btn.className = "play"
 		video.pause();
+		document.body.style.overflow = 'hidden';
 	}
 }
 
@@ -313,3 +315,7 @@ video.addEventListener('timeupdate', function () {
 		btn.className = "play";
 	}
 })
+
+  function terminarVideo() {
+	document.body.style.overflow = 'auto';
+  }
