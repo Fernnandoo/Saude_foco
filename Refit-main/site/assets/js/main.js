@@ -319,3 +319,68 @@ video.addEventListener('timeupdate', function () {
   function terminarVideo() {
 	document.body.style.overflow = 'auto';
   }
+
+  // função para calcular gasto calórico diário
+  function calc_diario () {
+	var sexo = document.getElementById('sexo');
+	var idade = document.getElementById('idade');
+	var peso = document.getElementById('peso');
+	var altura = document.getElementById('altura');
+	var atividade_semanal = document.getElementById('semanal');
+	var atividade_trabalho = document.getElementById('trabalho');
+	var tbm = 0;
+	var result = 0;
+
+	if (sexo = 'masculino') {
+		tbm = 88.36 + (13.4 * peso) + (4.8 * altura * 100) - (5.7 * idade);
+	}
+	else if (sexo = 'feminino') {
+		tbm = 447.6 + (9.2 * peso) + (3.1 * altura * 100) - (4.3 * idade);
+	}
+	else {
+		alert('Sexo inválido')
+	}
+
+	switch(atividade_semanal) {
+		case 'sedentario':
+			var fatorAtividade = 1.2;
+			break;
+		case 'leve':
+			var fatorAtividade = 1.375;
+			break;
+		case 'moderado':
+			var fatorAtividade = 1.55;
+			break;
+		case 'ativo':
+			var fatorAtividade = 1.725;
+			break;
+		case 'muito ativo':
+			var fatorAtividade = 1.9;
+			break;
+		default:
+			return 'erro'
+	}
+
+	switch(atividade_trabalho) {
+		case 'sedentario':
+			var fatorTrabalho = 1.2;
+			break;
+		case 'leve':
+			var fatorTrabalho = 1.375;
+			break;
+		case 'moderado':
+			var fatorTrabalho = 1.55;
+			break;
+		case 'ativo':
+			var fatorTrabalho = 1.725;
+			break;
+		case 'muito ativo':
+			var fatorTrabalho = 1.9;
+			break;
+		default:
+			return 'erro'
+	}
+
+	result = tbm * fatorAtividade * fatorTrabalho;
+	console.log('Seu gasto calórico diário é: ' + result);
+  }
