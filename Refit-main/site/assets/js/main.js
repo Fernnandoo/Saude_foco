@@ -295,12 +295,12 @@ function togglePlayPause() {
 	if (video.paused) {
 		btn.className = "pause";
 		video.play();
-		document.body.style.overflow = 'hidden';
+		// document.body.style.overflow = 'hidden';
 	}
 	else {
 		btn.className = "play"
 		video.pause();
-		document.body.style.overflow = 'hidden';
+		// document.body.style.overflow = 'hidden';
 	}
 }
 
